@@ -45,9 +45,7 @@ const SignInPage = () => {
 
         <button className={styles.loginBtn}>ログイン</button>
         <button className={styles.forgetPassBtn}>パスワードを忘れた方はこちら</button>
-        <button className={styles.registerBtn} onClick={register}>
-          新規登録はこちら
-        </button>
+        <button className={styles.registerBtn}>新規登録はこちら</button>
       </form>
     </div>
   );
