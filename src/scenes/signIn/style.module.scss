@@ -1,4 +1,80 @@
 .page {
+  font-family: Noto Sans JP;
   max-width: 960px;
-  width: 100%;
+
+  font-size: 14px;
+  position: relative;
+  margin: 0 auto;
+  width: 1200px;
+  height: 800px;
+  margin-top: 15%;
+  form {
+    width: 500px;
+    margin: 0 auto;
+  }
+  .mailAdress {
+    position: absolute;
+    width: 136px;
+    height: 20px;
+    left: 352px;
+    top: 214px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 45px;
+  }
+  input {
+    border: 1px solid #e5e5e5;
+    width: 500px;
+    height: 40px;
+  }
+  tr {
+    display: flex;
+    flex-direction: column;
+  }
+  th {
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: block;
+  }
+  button {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    width: 500px;
+    height: 48px;
+  }
+  .InputPass,
+  .InputMail {
+    padding: 11px 188px 12px 16px;
+    font-size: 12px;
+  }
+  .InputMail {
+    margin-bottom: 24px;
+  }
+  .loginBtn {
+    background: #05c757 !important;
+    border: 1px solid #05c757;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: white;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .forgetPassBtn {
+    width: 168px;
+    height: 17px;
+    font-size: 12px;
+    color: #7d7d7d;
+  }
+  .registerBtn {
+    color: #7d7d7d;
+    border: 1px solid #7d7d7d;
+    margin-top: 32px;
+  }
 }
