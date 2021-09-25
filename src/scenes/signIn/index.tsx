@@ -17,12 +17,8 @@ const SignInPage = () => {
   }, [account]);
 
   const onSubmit = (data: SignInParams) => {
-    console.log("hoge");
-
     signIn(data);
   };
-
-  console.log(errors);
 
   return (
     <div className={styles.page}>
@@ -30,7 +26,7 @@ const SignInPage = () => {
         <h1>求職者ログイン</h1>
         <div>
           {/* trをdivに */}
-          <th>メールアドレス</th>
+          <h3>メールアドレス</h3>
           {/* 正しいメールアドレスでない場合正しいメールアドレスでありませんというエラーメッセージ */}
           <input
             type="text"
@@ -50,7 +46,7 @@ const SignInPage = () => {
           )}
         </div>
         <div className={styles.logInItem}>
-          <th>パスワード</th>
+          <h3>パスワード</h3>
           <input
             type="password"
             className={styles.InputPass}
