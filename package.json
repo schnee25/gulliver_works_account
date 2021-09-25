@@ -5,7 +5,8 @@
   "scripts": {
     "start": "PORT=3500 webpack serve",
     "watch": "webpack --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
