@@ -1,3 +1,4 @@
+import { truncate } from "fs";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
@@ -36,15 +37,17 @@ const SignInPage = () => {
             className={styles.InputMail}
             name="account.email"
             ref={register({
-              required: "メールアドレスを正しく入力して下さい",
+              required: true,
               pattern: {
                 value: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "メールアドレスを正しく入力して下さい",
+                message: "※メールアドレスの形式が違います",
               },
             })}
             placeholder="coadmap@mail.com"
           />
-          {errors.account?.email && <p className="formError">{errors.account?.email.message}</p>}
+          {errors.account?.email && (
+            <p className={styles.formError}>{errors.account?.email.message}</p>
+          )}
         </div>
         <div className={styles.logInItem}>
           <th>パスワード</th>
@@ -52,10 +55,15 @@ const SignInPage = () => {
             type="password"
             className={styles.InputPass}
             name="account.password"
-            ref={register}
+            ref={register({
+              required: true,
+              minLength: { value: 6, message: "※パスワードは6文字以上で入力してください" },
+            })}
             placeholder="パスワードを入力" // type="textにする？" ここが✴︎になっちゃう
-            minLength={6}
           />
+          {errors.account?.password && (
+            <p className={styles.formError}>{errors.account?.password.message}</p>
+          )}
         </div>
         <button className={styles.loginBtn}>ログイン</button>
       </form>
