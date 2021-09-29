@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import { atom, useRecoilState } from "recoil";
 import { Account } from "../data/Account";
 import { HttpClient } from "../utilities/axiosInstance";
-import {APIHost} from "../utilities/constants";
-import {UnauthorizedError} from "../utilities/errors";
+import { APIHost } from "../utilities/constants";
+import { UnauthorizedError } from "../utilities/errors";
 
 const accountState = atom<Account | undefined>({
   key: "account",
@@ -21,9 +21,13 @@ export function useCurrentAccount() {
   useEffect(() => {
     if (!token) return;
 
-    const [_head, encodedPayload, _sig] = token.split(".");
-    const payload = JSON.parse(atob(encodedPayload));
+    const [_head, encodedPayload, _sig] = token.split(" ");
+    console.log(token.split("."));
+
+    const payload = JSON.parse(atob(token));
     const accountId = payload.sub;
+    console.log(accountId);
+
     if (typeof accountId !== "string") throw new UnauthorizedError("不正なtokenです");
 
     const fetchAccount = async () => {

@@ -1,10 +1,11 @@
 import { truncate } from "fs";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import styles from "./style.module.scss";
 import { SignInParams, useSignInPresenter } from "./useSignInPresenter";
+import axios from "axios";
 
 const SignInPage = () => {
   const { register, handleSubmit, errors } = useForm<SignInParams>();
@@ -61,7 +62,10 @@ const SignInPage = () => {
             <p className={styles.formError}>{errors.account?.password.message}</p>
           )}
         </div>
-        <button className={styles.loginBtn}>ログイン</button>
+
+        <button type="submit" className={styles.loginBtn}>
+          ログイン
+        </button>
       </form>
       <button className={styles.forgetPassBtn}>パスワードを忘れた方はこちら</button>
       <button className={styles.registerBtn}>新規登録はこちら</button>
