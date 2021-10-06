@@ -1,0 +1,29 @@
+.page {
+  .profileOverview {
+    font-size: 14px;
+    display: flex;
+    .subtitleTop {
+      color: #7d7d7d;
+    }
+    .contentsTop {
+      margin-left: 5px;
+    }
+  }
+  .subtitle {
+    font-size: 20px;
+  }
+  .contents {
+    font-size: 16px;
+    .date {
+      font-size: 12px;
+      color: #606060;
+    }
+    .position {
+      font-size: 14px;
+      color: #afafaf;
+    }
+    .jobSummary {
+      color: #7d7d7d;
+    }
+  }
+}
