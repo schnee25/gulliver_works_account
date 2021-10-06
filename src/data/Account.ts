@@ -1,7 +1,7 @@
-import { Profile } from "./Profile";
+import { ProfileType } from "./Profile";
 
 export interface Account {
   id: string;
   email: string;
-  profile?: Profile;
+  profile?: ProfileType;
 }
