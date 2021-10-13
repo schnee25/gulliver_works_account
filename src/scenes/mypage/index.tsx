@@ -5,7 +5,8 @@ import { ProfileType } from "../../data/Profile";
 import { WorkHistoryType } from "../../data/WorkHistory";
 import { AcademicHistoryType } from "../../data/AcademicHistory";
 import { HttpClient } from "../../utilities/axiosInstance";
-import profileImg from "./images/icon.svg";
+import profileBackground from "./images/profileTopBackground.jpg";
+import profileIcon from "./images/profIcon.png";
 
 const ApplicantMyPage = () => {
   const [Profiles, setProfile] = useState<ProfileType>();
@@ -33,15 +34,17 @@ const ApplicantMyPage = () => {
   return (
     <div className={styles.page}>
       <div className={styles.profileHeader}>
-        <img src="" alt="" className={styles.profileTopBackground} />
+        <div className={styles.profileHeaderBackground}>
+          <img src={profileBackground} alt="" className={styles.profileTopBackground} />
+        </div>
         <div className={styles.profileOverview}>
-          {/* <img src={profileImg} alt="" /> */}
-          <div>
-            <p className={styles.subtitleTop}>住まい</p>{" "}
-            <p className={styles.subtitleTop}>最終学歴</p>
-          </div>
+          <img src={profileIcon} alt="" className={styles.profileTopBackground} />
+
           <div className={styles.contentsTop}>
-            <p>{Profiles?.address}</p>
+            <p className={styles.name}>{Profiles?.lastName}</p>
+            <p className={styles.name}>{Profiles?.firstName}</p>
+            <p className={styles.subtitleTop}>住まい</p> <p>{Profiles?.address}</p>
+            <p className={styles.subtitleTop}>最終学歴</p>{" "}
             {academicHistories && <p>{academicHistories[0].name}</p>}
           </div>
         </div>
@@ -49,40 +52,71 @@ const ApplicantMyPage = () => {
       <div className={styles.container}>
         <div className={styles.selfIntroduction}>
           <h3 className={styles.subtitle}>自己紹介</h3>
-          <p>{Profiles?.biography}</p>
+          <div className={styles.contentsOverAll}>
+            <div className={styles.profContents}>
+              <div className={styles.contentsMain}>
+                <p>{Profiles?.biography}</p>
+              </div>
+              <button onClick={() => console.log("編集する")} className={styles.edit}>
+                編集する
+              </button>
+            </div>
+          </div>
         </div>
-        <div className={styles.workHistory}>
+        <div className={styles.workHistories}>
           <h3 className={styles.subtitle}>職歴</h3>
-          <div className={styles.contents}>
+          <div className={styles.contentsOverAll}>
             {workHistories?.map((workHistory) => {
               return (
-                <div key={workHistory.id}>
-                  <p className={styles.date}>{workHistory.sinceDate}</p>
-                  <p className={styles.date}>{workHistory.untilDate}</p>
-                  <p className={styles.mainContent}>{workHistory.name}</p>
-                  <p className={styles.position}>{workHistory.position}</p>
-                  <p className={styles.jobSummary}>{workHistory.jobSummary}</p>
+                <div key={workHistory.id} className={styles.workHistory}>
+                  <div className={styles.dates}>
+                    <p className={styles.date}>{workHistory.sinceDate}-</p>
+                    <p className={styles.date}>{workHistory.untilDate}</p>
+                  </div>
+                  <div className={styles.contents}>
+                    <div className={styles.contentsMain}>
+                      <p className={styles.name}>{workHistory.name}</p>
+                      <p className={styles.position}>{workHistory.position}</p>
+                    </div>
+                    <button onClick={() => console.log("編集する")} className={styles.edit}>
+                      編集する
+                    </button>
+                    <p className={styles.jobSummary}>{workHistory.jobSummary}</p>
+                  </div>
                 </div>
               );
             })}
-            <button onClick={() => console.log("編集する")}>編集する</button>
+            <button onClick={() => console.log("職歴を追加")} className={styles.add}>
+              職歴を追加
+            </button>
           </div>
-          <button onClick={() => console.log("職歴を追加")}>職歴を追加</button>
         </div>
-        <div className={styles.academicBackground}>
+        <div className={styles.academicBackgrounds}>
           <h3 className={styles.subtitle}>学歴</h3>
-          {academicHistories?.map((academicHistory) => {
-            return (
-              <div key={academicHistory.id}>
-                <p className={styles.mainContent}>{academicHistory.name}</p>
-                <p className={styles.subContent}>{academicHistory.faculty}</p>
-              </div>
-            );
-          })}
-          <div className={styles.contents}>
-            <button onClick={() => console.log("編集する")}>編集する</button>
+          <div className={styles.contentsOverAll}>
+            {academicHistories?.map((academicHistory) => {
+              return (
+                <div key={academicHistory.id} className={styles.academicBackground}>
+                  <div className={styles.dates}>
+                    <p className={styles.date}>{academicHistory.sinceDate}-</p>
+                    <p className={styles.date}>{academicHistory.untilDate}</p>
+                  </div>
+                  <div className={styles.contents}>
+                    <div className={styles.contentsMain}>
+                      <p className={styles.name}>{academicHistory.name}</p>
+                      <p className={styles.faculty}>{academicHistory.faculty}</p>
+                    </div>
+                    <button onClick={() => console.log("編集する")} className={styles.edit}>
+                      編集する
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+            <button onClick={() => console.log("学歴を追加")} className={styles.add}>
+              学歴を追加
+            </button>
           </div>
-          <button onClick={() => console.log("学歴を追加")}>学歴を追加</button>
         </div>
       </div>
     </div>
