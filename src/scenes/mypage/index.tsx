@@ -26,6 +26,7 @@ const ApplicantMyPage = () => {
     });
   }, []);
 
+  // test
   return (
     <div className={styles.page}>
       <div className={styles.profileHeader}>
