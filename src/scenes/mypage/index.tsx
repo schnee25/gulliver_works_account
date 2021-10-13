@@ -7,6 +7,7 @@ import { AcademicHistoryType } from "../../data/AcademicHistory";
 import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
+import editButton from "./button";
 
 const ApplicantMyPage = () => {
   const [Profiles, setProfile] = useState<ProfileType>();
@@ -19,17 +20,11 @@ const ApplicantMyPage = () => {
       method: "GET",
       url: "https://fed79e73-d600-4c5a-8f45-dfa52cb9d13a.mock.pstmn.io/accounts",
     }).then((res) => {
-      setPosts(res.data);
-      const Profiles = res.data.profile;
-      const workHistories = res.data.workHistories;
-      const academicHistories = res.data.academicHistories;
-
       setProfile(res.data.profile);
       setWorkHistory(res.data.workHistories);
       setAcademicHistory(res.data.academicHistories);
     });
   }, []);
-  console.log(academicHistories);
 
   return (
     <div className={styles.page}>
@@ -57,9 +52,7 @@ const ApplicantMyPage = () => {
               <div className={styles.contentsMain}>
                 <p>{Profiles?.biography}</p>
               </div>
-              <button onClick={() => console.log("編集する")} className={styles.edit}>
-                編集する
-              </button>
+              {editButton}
             </div>
           </div>
         </div>
@@ -78,9 +71,7 @@ const ApplicantMyPage = () => {
                       <p className={styles.name}>{workHistory.name}</p>
                       <p className={styles.position}>{workHistory.position}</p>
                     </div>
-                    <button onClick={() => console.log("編集する")} className={styles.edit}>
-                      編集する
-                    </button>
+                    {editButton}
                     <p className={styles.jobSummary}>{workHistory.jobSummary}</p>
                   </div>
                 </div>
@@ -106,9 +97,7 @@ const ApplicantMyPage = () => {
                       <p className={styles.name}>{academicHistory.name}</p>
                       <p className={styles.faculty}>{academicHistory.faculty}</p>
                     </div>
-                    <button onClick={() => console.log("編集する")} className={styles.edit}>
-                      編集する
-                    </button>
+                    {editButton}
                   </div>
                 </div>
               );
