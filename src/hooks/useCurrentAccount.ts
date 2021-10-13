@@ -22,11 +22,9 @@ export function useCurrentAccount() {
     if (!token) return;
 
     const [_head, encodedPayload, _sig] = token.split(" ");
-    console.log(token.split("."));
 
     const payload = JSON.parse(atob(token));
     const accountId = payload.sub;
-    console.log(accountId);
 
     if (typeof accountId !== "string") throw new UnauthorizedError("不正なtokenです");
 
