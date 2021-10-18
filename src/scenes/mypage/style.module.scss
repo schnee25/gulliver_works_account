@@ -1,0 +1,100 @@
+.page {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  .profileHeader {
+    position: relative;
+    .profileHeaderBackground {
+      margin-bottom: 130px;
+    }
+    .profileOverview {
+      margin: 0 60px;
+      position: absolute;
+      bottom: -30%;
+      width: 100%;
+      font-size: 14px;
+      display: flex;
+      .subtitleTop {
+        color: #7d7d7d;
+      }
+      .contentsTop {
+        margin-left: 5px;
+        margin: 0 30px;
+        .name {
+          display: inline-block;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  .container {
+    .profContents {
+      width: 100%;
+    }
+    .workHistories,
+    .academicBackgrounds {
+      width: 100%;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      margin-top: 30px;
+    }
+    button {
+      color: #afafaf;
+      border: 1px solid #e5e5e5;
+      box-sizing: border-box;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .contentsOverAll {
+      .workHistory,
+      .academicBackground {
+        padding: 15px 0;
+      }
+      width: 100%;
+      .dates {
+        padding: 0 10px 0 0;
+        width: 25%;
+        float: left;
+      }
+      .profContents {
+        width: 100%;
+      }
+      .contents {
+        width: 75%;
+      }
+      .profContents,
+      .contents {
+        display: inline-block;
+        .contentsMain {
+          display: inline-block;
+        }
+        .edit {
+          float: right;
+          padding: 3px 8px;
+        }
+        .position,
+        .faculty {
+          font-size: 14px;
+          color: #afafaf;
+        }
+        .jobSummary {
+          color: #7d7d7d;
+          font-size: 16px;
+        }
+      }
+      .dates {
+        display: inline-block;
+        .date {
+          font-size: 12px;
+          color: #606060;
+        }
+      }
+      .add {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+}
