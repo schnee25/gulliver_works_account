@@ -9,7 +9,7 @@ function editButton() {
       height="18px"
       onClick={() => console.log("clicked")}
       radius="1%"
-      width="100%"
+      width="80%"
       children="編集"
     />
   );
