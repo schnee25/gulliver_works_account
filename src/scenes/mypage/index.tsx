@@ -8,6 +8,7 @@ import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
 import editButton from "./button";
+import { APIHost } from "utilities/constants";
 
 const ApplicantMyPage = () => {
   const [Profiles, setProfile] = useState<ProfileType>();
@@ -18,6 +19,7 @@ const ApplicantMyPage = () => {
   useEffect(() => {
     HttpClient.request({
       method: "GET",
+      // url: `${APIHost.Account}/my_page`,
       url: "https://fed79e73-d600-4c5a-8f45-dfa52cb9d13a.mock.pstmn.io/accounts",
     }).then((res) => {
       setProfile(res.data.profile);

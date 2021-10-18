@@ -3,7 +3,7 @@ import "./App.scss";
 import { BrowserRouter, Route } from "react-router-dom";
 import RecruitmentIndexPage from "./scenes/recruitment/RecruitmentIndexPage";
 import SignInPage from "./scenes/signIn";
-import ApplicantMyPage from "./scenes/mypage";
+import ApplicantMyPage from "./scenes/myPage";
 
 const App: FC = () => (
   <BrowserRouter>
