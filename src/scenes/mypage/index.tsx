@@ -31,6 +31,7 @@ const ApplicantMyPage = () => {
       setAcademicHistory(res.data.academicHistories);
     });
   }, []);
+  //test
 
   return (
     <div className={styles.page}>
