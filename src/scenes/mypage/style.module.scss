@@ -6,6 +6,9 @@
     position: relative;
     .profileHeaderBackground {
       margin-bottom: 130px;
+      .profileTopBackground {
+        max-width: 100%;
+      }
     }
     .profileOverview {
       margin: 0 60px;

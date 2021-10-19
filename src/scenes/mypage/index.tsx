@@ -7,7 +7,7 @@ import { AcademicHistoryType } from "../../data/AcademicHistory";
 import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
-import editButton from "../../button";
+import editButton from "../../components/editButton/button";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { APIHost } from "../../utilities/constants";
 
@@ -18,7 +18,6 @@ const ApplicantMyPage = () => {
   const [open, setOpen] = React.useState(false);
   const [post, setPosts] = useState([]);
   const { account } = useCurrentAccount();
-  console.log(account);
 
   useEffect(() => {
     HttpClient.request({
@@ -31,7 +30,6 @@ const ApplicantMyPage = () => {
       setAcademicHistory(res.data.academicHistories);
     });
   }, []);
-  //test
 
   return (
     <div className={styles.page}>
@@ -41,7 +39,6 @@ const ApplicantMyPage = () => {
         </div>
         <div className={styles.profileOverview}>
           <img src={profileIcon} alt="" className={styles.profileTopBackground} />
-
           <div className={styles.contentsTop}>
             <p className={styles.name}>{Profiles?.lastName}</p>
             <p className={styles.name}>{Profiles?.firstName}</p>
