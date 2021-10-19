@@ -7,7 +7,7 @@ import { AcademicHistoryType } from "../../data/AcademicHistory";
 import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
-import editButton from "../../components/editButton/button";
+import EditButton from "../../components/editButton/button";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { APIHost } from "../../utilities/constants";
 
@@ -50,13 +50,13 @@ const ApplicantMyPage = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.selfIntroduction}>
+          <EditButton />
           <h3 className={styles.subtitle}>自己紹介</h3>
           <div className={styles.contentsOverAll}>
             <div className={styles.profContents}>
               <div className={styles.contentsMain}>
                 <p>{Profiles?.biography}</p>
               </div>
-              {editButton}
             </div>
           </div>
         </div>
@@ -71,11 +71,11 @@ const ApplicantMyPage = () => {
                     <p className={styles.date}>{workHistory.untilDate}</p>
                   </div>
                   <div className={styles.contents}>
+                    <EditButton />
                     <div className={styles.contentsMain}>
                       <p className={styles.name}>{workHistory.name}</p>
                       <p className={styles.position}>{workHistory.position}</p>
                     </div>
-                    {editButton}
                     <p className={styles.jobSummary}>{workHistory.jobSummary}</p>
                   </div>
                 </div>
@@ -97,11 +97,11 @@ const ApplicantMyPage = () => {
                     <p className={styles.date}>{academicHistory.untilDate}</p>
                   </div>
                   <div className={styles.contents}>
+                    <EditButton />
                     <div className={styles.contentsMain}>
                       <p className={styles.name}>{academicHistory.name}</p>
                       <p className={styles.faculty}>{academicHistory.faculty}</p>
                     </div>
-                    {editButton}
                   </div>
                 </div>
               );
