@@ -3,7 +3,7 @@ import styles from "./style.module.scss";
 import axios from "axios";
 import { ProfileType } from "../../data/Profile";
 import { WorkHistoryType } from "../../data/WorkHistory";
-import { AcademicHistoryType } from "../../data/AcademicHistory";
+import { AcademicBackgroundType } from "../../data/AcademicBackground";
 import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
@@ -14,7 +14,7 @@ import Button from "../../../src/components/editButton/CustomButtonComponent";
 const ApplicantMyPage = () => {
   const [Profiles, setProfile] = useState<ProfileType>();
   const [workHistories, setWorkHistory] = useState<WorkHistoryType[]>();
-  const [academicHistories, setAcademicHistory] = useState<AcademicHistoryType[]>();
+  const [academicHistories, setAcademicBackground] = useState<AcademicBackgroundType[]>();
   const [open, setOpen] = React.useState(false);
   const [post, setPosts] = useState([]);
   const { account } = useCurrentAccount();
@@ -27,7 +27,7 @@ const ApplicantMyPage = () => {
     }).then((res) => {
       setProfile(res.data.profile);
       setWorkHistory(res.data.workHistories);
-      setAcademicHistory(res.data.academicHistories);
+      setAcademicBackground(res.data.academicHistories);
     });
   }, []);
 
