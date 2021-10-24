@@ -22,7 +22,21 @@ const addAcademicBackground = () => {
 
   return (
     <div className={styles.page}>
-      <div></div>
+      <div className={styles.header}>
+        <h1>職歴</h1>
+      </div>
+      <div className={styles.main}>
+        <h2 className={styles.contentsTitle}>学校名</h2>
+        {/* <p className={styles.contents}>{academicHistories.name}</p> */}
+        <h2 className={styles.contentsTitle}>学部･学科</h2>
+        {/* <p className={styles.contents}>{academicHistories.name}</p> */}
+        <h2 className={styles.contentsTitle}>日程</h2>
+        {/* <p className={styles.contents}>{academicHistories.name}</p> */}
+      </div>
+      <div className={styles.buttons}>
+        <button id="delete">キャンセル</button>
+        <button id="update">更新</button>
+      </div>
     </div>
   );
 };
