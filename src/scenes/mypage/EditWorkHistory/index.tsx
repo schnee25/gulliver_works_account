@@ -2,5 +2,5 @@ import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
 import axios from "axios";
 
-const editSelfIntroduction = () => {};
-export default editSelfIntroduction;
+const EditWorkHistory = () => {};
+export default EditWorkHistory;
