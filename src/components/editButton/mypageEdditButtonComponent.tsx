@@ -6,7 +6,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Button: React.FC<Props> = ({ onClick, children }) => {
+const EditButton: React.FC<Props> = ({ onClick, children }) => {
   return (
     <div>
       <button onClick={onClick} className={styles.editButton}>
@@ -16,4 +16,4 @@ const Button: React.FC<Props> = ({ onClick, children }) => {
   );
 };
 
-export default Button;
+export default EditButton;
