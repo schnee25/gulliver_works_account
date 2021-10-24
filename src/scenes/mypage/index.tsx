@@ -7,8 +7,9 @@ import { AcademicHistoryType } from "../../data/AcademicHistory";
 import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
-import editButton from "./button";
-import { APIHost } from "utilities/constants";
+import { useCurrentAccount } from "../../hooks/useCurrentAccount";
+import { APIHost } from "../../utilities/constants";
+import Button from "../../../src/components/editButton/CustomButtonComponent";
 
 const ApplicantMyPage = () => {
   const [Profiles, setProfile] = useState<ProfileType>();
@@ -16,11 +17,13 @@ const ApplicantMyPage = () => {
   const [academicHistories, setAcademicHistory] = useState<AcademicHistoryType[]>();
   const [open, setOpen] = React.useState(false);
   const [post, setPosts] = useState([]);
+  const { account } = useCurrentAccount();
+
   useEffect(() => {
     HttpClient.request({
       method: "GET",
-      // url: `${APIHost.Account}/my_page`,
-      url: "https://fed79e73-d600-4c5a-8f45-dfa52cb9d13a.mock.pstmn.io/accounts",
+      url: `${APIHost.APP}/accounts/${account?.id}`,
+      // url: "https://fed79e73-d600-4c5a-8f45-dfa52cb9d13a.mock.pstmn.io/accounts",
     }).then((res) => {
       setProfile(res.data.profile);
       setWorkHistory(res.data.workHistories);
@@ -28,7 +31,6 @@ const ApplicantMyPage = () => {
     });
   }, []);
 
-  // test
   return (
     <div className={styles.page}>
       <div className={styles.profileHeader}>
@@ -37,7 +39,6 @@ const ApplicantMyPage = () => {
         </div>
         <div className={styles.profileOverview}>
           <img src={profileIcon} alt="" className={styles.profileTopBackground} />
-
           <div className={styles.contentsTop}>
             <p className={styles.name}>{Profiles?.lastName}</p>
             <p className={styles.name}>{Profiles?.firstName}</p>
@@ -49,13 +50,13 @@ const ApplicantMyPage = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.selfIntroduction}>
+          <Button onClick={() => console.log("clicked")}>編集</Button>
           <h3 className={styles.subtitle}>自己紹介</h3>
           <div className={styles.contentsOverAll}>
             <div className={styles.profContents}>
               <div className={styles.contentsMain}>
                 <p>{Profiles?.biography}</p>
               </div>
-              {editButton}
             </div>
           </div>
         </div>
@@ -70,11 +71,11 @@ const ApplicantMyPage = () => {
                     <p className={styles.date}>{workHistory.untilDate}</p>
                   </div>
                   <div className={styles.contents}>
+                    <Button onClick={() => console.log("clicked")}>編集</Button>
                     <div className={styles.contentsMain}>
                       <p className={styles.name}>{workHistory.name}</p>
                       <p className={styles.position}>{workHistory.position}</p>
                     </div>
-                    {editButton}
                     <p className={styles.jobSummary}>{workHistory.jobSummary}</p>
                   </div>
                 </div>
@@ -96,11 +97,11 @@ const ApplicantMyPage = () => {
                     <p className={styles.date}>{academicHistory.untilDate}</p>
                   </div>
                   <div className={styles.contents}>
+                    <Button onClick={() => console.log("clicked")}>編集</Button>
                     <div className={styles.contentsMain}>
                       <p className={styles.name}>{academicHistory.name}</p>
                       <p className={styles.faculty}>{academicHistory.faculty}</p>
                     </div>
-                    {editButton}
                   </div>
                 </div>
               );
