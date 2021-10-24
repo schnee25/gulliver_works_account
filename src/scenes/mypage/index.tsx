@@ -7,9 +7,9 @@ import { AcademicHistoryType } from "../../data/AcademicHistory";
 import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
-import EditButton from "../../components/editButton/button";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { APIHost } from "../../utilities/constants";
+import Button from "../../../src/components/editButton/CustomButtonComponent";
 
 const ApplicantMyPage = () => {
   const [Profiles, setProfile] = useState<ProfileType>();
@@ -50,7 +50,7 @@ const ApplicantMyPage = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.selfIntroduction}>
-          <EditButton />
+          <Button onClick={() => console.log("clicked")}>編集</Button>
           <h3 className={styles.subtitle}>自己紹介</h3>
           <div className={styles.contentsOverAll}>
             <div className={styles.profContents}>
@@ -71,7 +71,7 @@ const ApplicantMyPage = () => {
                     <p className={styles.date}>{workHistory.untilDate}</p>
                   </div>
                   <div className={styles.contents}>
-                    <EditButton />
+                    <Button onClick={() => console.log("clicked")}>編集</Button>
                     <div className={styles.contentsMain}>
                       <p className={styles.name}>{workHistory.name}</p>
                       <p className={styles.position}>{workHistory.position}</p>
@@ -97,7 +97,7 @@ const ApplicantMyPage = () => {
                     <p className={styles.date}>{academicHistory.untilDate}</p>
                   </div>
                   <div className={styles.contents}>
-                    <EditButton />
+                    <Button onClick={() => console.log("clicked")}>編集</Button>
                     <div className={styles.contentsMain}>
                       <p className={styles.name}>{academicHistory.name}</p>
                       <p className={styles.faculty}>{academicHistory.faculty}</p>
