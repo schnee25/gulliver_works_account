@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
 import { ProfileType } from "../../data/Profile";
 import { HttpClient } from "../../utilities/axiosInstance";
-import profileBackground from "../../scenes/myPage/images/profileTopBackground.jpg";
-import profileIcon from "../../scenes/myPage/images/profIcon.png";
+import profileBackground from "./image/Rectangle 180.png";
+import profileIcon from "./image/Rectangle 181.png";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { APIHost } from "../../utilities/constants";
 
