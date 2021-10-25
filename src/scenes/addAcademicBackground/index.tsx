@@ -35,7 +35,7 @@ const addAcademicBackground = () => {
         <input className={styles.contents} type="date" name="" id="" />
       </div>
       <div className={styles.buttons}>
-        <Button color="#05C757" onClick={() => console.log("cancel")} id={"delete"}>
+        <Button color="#05C757" onClick={() => console.log("cancel")} id={"cancel"}>
           キャンセル
         </Button>
         <Button color="#05C757" onClick={() => console.log("update")} id={"update"}>
