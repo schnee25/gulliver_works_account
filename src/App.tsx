@@ -21,7 +21,7 @@ const App: FC = () => (
         <Route path="/edit_basic_info" component={EditBasicInfo} />
         <Route path="/edit_self_introduction" component={editSelfIntroduction} />
         <Route path="/edit_work_history" component={editWorkHistory} />
-        <Route path="/edit_academic_background}" component={editAcademicBackground} />
+        <Route path="/edit_academic_background" component={editAcademicBackground} />
         <Route path="/add_work_history" component={addWorkHistory} />
         <Route path="/add_academic_background" component={addAcademicBackground} />
       </Switch>
