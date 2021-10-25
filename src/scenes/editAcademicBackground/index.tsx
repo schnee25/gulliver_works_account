@@ -4,6 +4,7 @@ import { AcademicBackgroundType } from "../../data/AcademicBackground";
 import { HttpClient } from "../../utilities/axiosInstance";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { APIHost } from "../../utilities/constants";
+import Button from "../../components/modalEditButton/CustomButtonComponent";
 
 const editAcademicBackground = () => {
   const [academicHistories, setAcademicBackground] = useState<AcademicBackgroundType[]>();
@@ -27,15 +28,19 @@ const editAcademicBackground = () => {
       </div>
       <div className={styles.main}>
         <h2 className={styles.contentsTitle}>学校名</h2>
-        {/* <p className={styles.contents}>{academicHistories.name}</p> */}
+        <div className={styles.contents}></div>
         <h2 className={styles.contentsTitle}>学部･学科</h2>
-        {/* <p className={styles.contents}>{academicHistories.name}</p> */}
+        <div className={styles.contents}></div>
         <h2 className={styles.contentsTitle}>日程</h2>
-        {/* <p className={styles.contents}>{academicHistories.name}</p> */}
+        <div className={styles.contents}></div>
       </div>
       <div className={styles.buttons}>
-        <button id="delete">キャンセル</button>
-        <button id="update">更新</button>
+        <Button color="#05C757" onClick={() => console.log("cancel")} id={"cancel"}>
+          キャンセル
+        </Button>
+        <Button color="#05C757" onClick={() => console.log("update")} id={"update"}>
+          更新
+        </Button>
       </div>
     </div>
   );
