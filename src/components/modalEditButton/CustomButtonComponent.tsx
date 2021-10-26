@@ -1,17 +1,18 @@
 import React from "react";
-import styles from "./style.module.scss";
+import styles from "../../scenes/myPage";
 
 interface Props {
+  className?: string;
   onClick: () => void;
   color: string;
   children?: React.ReactNode;
   id: string;
 }
 
-const Button: React.FC<Props> = ({ onClick, color, children, id }) => {
+const Button: React.FC<Props> = ({ className, onClick, color, children, id }) => {
   return (
     <button
-      className={styles.button}
+      className={className}
       id={id}
       onClick={onClick}
       style={{
