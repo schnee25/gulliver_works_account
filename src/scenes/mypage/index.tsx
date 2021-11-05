@@ -4,7 +4,7 @@ import styles from "./style.module.scss";
 import axios from "axios";
 import { ProfileType } from "../../data/Profile";
 import { WorkHistoryType } from "../../data/WorkHistory";
-import { AcademicHistoryType } from "../../data/AcademicBackground";
+import { AcademicHistoryType } from "../../data/AcademicHistory";
 import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
@@ -16,7 +16,7 @@ import { Modal, Button } from "antd";
 const ApplicantMyPage = () => {
   const [Profiles, setProfile] = useState<ProfileType>();
   const [workHistories, setWorkHistory] = useState<WorkHistoryType[]>();
-  const [academicHistories, setAcademicBackground] = useState<AcademicHistoryType[]>();
+  const [academicHistories, setAcademicHistory] = useState<AcademicHistoryType[]>();
   const [open, setOpen] = React.useState(false);
   const [post, setPosts] = useState([]);
   const { account } = useCurrentAccount();
@@ -29,48 +29,35 @@ const ApplicantMyPage = () => {
     }).then((res) => {
       setProfile(res.data.profile);
       setWorkHistory(res.data.workHistories);
-      setAcademicBackground(res.data.academicHistories);
+      setAcademicHistory(res.data.academicHistories);
     });
   }, []);
 
   // EditWorkHistoryModalModalコンポーネントの表示の状態を定義する
   const [isWorkHistoryModalVisible, setIsEditWorkHistoryModalVisible] = useState(false);
-  const showEditWorkHistoryModal = () => {
-    setIsEditWorkHistoryModalVisible(true);
+  const toggleIsEditWorkHistoryModalVisible = () => {
+    setIsEditWorkHistoryModalVisible(!isWorkHistoryModalVisible);
   };
-
-  // EditAcademicBackgroundModalModalコンポーネントの表示の状態を定義する
-  const [isAcademicBackgroundModalVisible, setIsEditAcademicBackgroundModalModal] = useState(false);
-  const showEditAcademicBackgroundModal = () => {
-    setIsEditAcademicBackgroundModalModal(true);
-  };
-
-  // EditAcademicBackgroundModalModalコンポーネントの表示の状態を定義する
-  const [isEditBasicInfoModalVisible, setIsEditBasicInfoModalModal] = useState(false);
-  const showEditBasicInfoModal = () => {
-    setIsEditBasicInfoModalModal(true);
-  };
-
-  // EditWorkHistoryModalModalコンポーネントの表示の状態を定義する
   const [isAddWorkHistoryModalVisible, setIsAddWorkHistoryModalVisible] = useState(false);
-  const showAddWorkHistoryModal = () => {
-    setIsAddWorkHistoryModalVisible(true);
+  const toggleIsAddWorkHistoryModalVisible = () => {
+    setIsAddWorkHistoryModalVisible(!isAddWorkHistoryModalVisible);
   };
 
-  // EditAcademicBackgroundModalModalコンポーネントの表示の状態を定義する
-  const [isAddAcademicBackgroundModalVisible, setIsAddAcademicBackgroundModalModal] =
-    useState(false);
-  const showAddAcademicBackgroundModal = () => {
-    setIsAddAcademicBackgroundModalModal(true);
+  const [isEditBasicInfoModalVisible, setIsEditBasicInfoModalModal] = useState(false);
+  const toggleIsEditBasicInfoModalModal = () => {
+    setIsEditBasicInfoModalModal(!isEditBasicInfoModalVisible);
   };
 
-  const Cancel = () => {
-    setIsEditWorkHistoryModalVisible(false);
-    setIsEditAcademicBackgroundModalModal(false);
-    setIsEditBasicInfoModalModal(false);
-    setIsAddWorkHistoryModalVisible(false);
-    setIsAddAcademicBackgroundModalModal(false);
+  const [isAcademicHistoryModalVisible, setIsEditAcademicHistoryModalModal] = useState(false);
+  const toggleIsEditAcademicHistoryModalVisible = () => {
+    setIsEditAcademicHistoryModalModal(!isAcademicHistoryModalVisible);
   };
+  const [isAddAcademicHistoryModalVisible, setIsAddAcademicHistoryModalModal] = useState(false);
+  const toggleIsAddAcademicHistoryModal = () => {
+    setIsAddAcademicHistoryModalModal(!isAcademicHistoryModalVisible);
+  };
+
+  //
 
   return (
     <React.Fragment>
@@ -92,7 +79,7 @@ const ApplicantMyPage = () => {
         </div>
         <div className={styles.container}>
           <div className={styles.selfIntroduction}>
-            <EditButton onClick={showEditBasicInfoModal}>編集</EditButton>
+            <EditButton onClick={toggleIsEditBasicInfoModalModal}>編集</EditButton>
             <h3 className={styles.subtitle}>自己紹介</h3>
             <div className={styles.contentsOverAll}>
               <div className={styles.profContents}>
@@ -113,7 +100,7 @@ const ApplicantMyPage = () => {
                       <p className={styles.date}>{workHistory.untilDate}</p>
                     </div>
                     <div className={styles.contents}>
-                      <EditButton onClick={showEditWorkHistoryModal}>編集</EditButton>
+                      <EditButton onClick={toggleIsEditWorkHistoryModalVisible}>編集</EditButton>
 
                       <div className={styles.contentsMain}>
                         <p className={styles.name}>{workHistory.name}</p>
@@ -124,7 +111,7 @@ const ApplicantMyPage = () => {
                   </div>
                 );
               })}
-              <button onClick={showAddWorkHistoryModal} className={styles.add}>
+              <button onClick={toggleIsAddWorkHistoryModalVisible} className={styles.add}>
                 職歴を追加
               </button>
             </div>
@@ -140,7 +127,9 @@ const ApplicantMyPage = () => {
                       <p className={styles.date}>{academicHistory.untilDate}</p>
                     </div>
                     <div className={styles.contents}>
-                      <EditButton onClick={showEditAcademicBackgroundModal}>編集</EditButton>
+                      <EditButton onClick={toggleIsEditAcademicHistoryModalVisible}>
+                        編集
+                      </EditButton>
                       <div className={styles.contentsMain}>
                         <p className={styles.name}>{academicHistory.name}</p>
                         <p className={styles.faculty}>{academicHistory.faculty}</p>
@@ -149,7 +138,7 @@ const ApplicantMyPage = () => {
                   </div>
                 );
               })}
-              <button onClick={showAddAcademicBackgroundModal} className={styles.add}>
+              <button onClick={toggleIsAddAcademicHistoryModal} className={styles.add}>
                 学歴を追加
               </button>
             </div>
@@ -191,7 +180,7 @@ const ApplicantMyPage = () => {
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}></div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={Cancel} id={"cancel"}>
+            <Button color="#05C757" onClick={toggleIsEditBasicInfoModalModal} id={"cancel"}>
               キャンセル
             </Button>
             <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
@@ -232,7 +221,7 @@ const ApplicantMyPage = () => {
             </Button>
           </div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={Cancel} id={"cancel"}>
+            <Button color="#05C757" onClick={toggleIsEditWorkHistoryModalVisible} id={"cancel"}>
               キャンセル
             </Button>
             <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
@@ -244,7 +233,7 @@ const ApplicantMyPage = () => {
       ;{/* 学歴 */}
       <Modal
         title=""
-        visible={isAcademicBackgroundModalVisible}
+        visible={isAcademicHistoryModalVisible}
         className={styles.modal}
         footer={null}
         destroyOnClose={true}
@@ -271,7 +260,7 @@ const ApplicantMyPage = () => {
             </Button>
           </div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={Cancel} id={"cancel"}>
+            <Button color="#05C757" onClick={toggleIsAddAcademicHistoryModal} id={"cancel"}>
               キャンセル
             </Button>
             <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
@@ -315,7 +304,7 @@ const ApplicantMyPage = () => {
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}></div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={Cancel} id={"cancel"}>
+            <Button color="#05C757" onClick={toggleIsEditAcademicHistoryModalVisible} id={"cancel"}>
               キャンセル
             </Button>
             <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
@@ -327,7 +316,7 @@ const ApplicantMyPage = () => {
       {/* 学歴追加 */}
       <Modal
         title=""
-        visible={isAddAcademicBackgroundModalVisible}
+        visible={isAddAcademicHistoryModalVisible}
         className={styles.modal}
         footer={null}
         destroyOnClose={true}
@@ -350,7 +339,7 @@ const ApplicantMyPage = () => {
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}></div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={Cancel} id={"cancel"}>
+            <Button color="#05C757" onClick={toggleIsAddWorkHistoryModalVisible} id={"cancel"}>
               キャンセル
             </Button>
             <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
