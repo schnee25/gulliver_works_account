@@ -10,7 +10,7 @@ import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { APIHost } from "../../utilities/constants";
-import EditButton from "../../components/editButton/mypageEdditButtonComponent";
+import CustomButton from "../../components/Button/CustomButtonComponent";
 import { Modal, Button } from "antd";
 
 const ApplicantMyPage = () => {
@@ -54,7 +54,7 @@ const ApplicantMyPage = () => {
   };
   const [isAddAcademicHistoryModalVisible, setIsAddAcademicHistoryModalModal] = useState(false);
   const toggleIsAddAcademicHistoryModal = () => {
-    setIsAddAcademicHistoryModalModal(!isAcademicHistoryModalVisible);
+    setIsAddAcademicHistoryModalModal(!isAddAcademicHistoryModalVisible);
   };
 
   //
@@ -79,7 +79,9 @@ const ApplicantMyPage = () => {
         </div>
         <div className={styles.container}>
           <div className={styles.selfIntroduction}>
-            <EditButton onClick={toggleIsEditBasicInfoModalModal}>編集</EditButton>
+            <CustomButton className={styles.editButton} onClick={toggleIsEditBasicInfoModalModal}>
+              編集
+            </CustomButton>
             <h3 className={styles.subtitle}>自己紹介</h3>
             <div className={styles.contentsOverAll}>
               <div className={styles.profContents}>
@@ -100,8 +102,12 @@ const ApplicantMyPage = () => {
                       <p className={styles.date}>{workHistory.untilDate}</p>
                     </div>
                     <div className={styles.contents}>
-                      <EditButton onClick={toggleIsEditWorkHistoryModalVisible}>編集</EditButton>
-
+                      <CustomButton
+                        className={styles.editButton}
+                        onClick={toggleIsEditWorkHistoryModalVisible}
+                      >
+                        編集
+                      </CustomButton>
                       <div className={styles.contentsMain}>
                         <p className={styles.name}>{workHistory.name}</p>
                         <p className={styles.position}>{workHistory.position}</p>
@@ -111,9 +117,9 @@ const ApplicantMyPage = () => {
                   </div>
                 );
               })}
-              <button onClick={toggleIsAddWorkHistoryModalVisible} className={styles.add}>
+              <CustomButton onClick={toggleIsAddWorkHistoryModalVisible} className={styles.add}>
                 職歴を追加
-              </button>
+              </CustomButton>
             </div>
           </div>
           <div className={styles.academicBackgrounds}>
@@ -127,9 +133,12 @@ const ApplicantMyPage = () => {
                       <p className={styles.date}>{academicHistory.untilDate}</p>
                     </div>
                     <div className={styles.contents}>
-                      <EditButton onClick={toggleIsEditAcademicHistoryModalVisible}>
+                      <CustomButton
+                        className={styles.editButton}
+                        onClick={toggleIsEditAcademicHistoryModalVisible}
+                      >
                         編集
-                      </EditButton>
+                      </CustomButton>
                       <div className={styles.contentsMain}>
                         <p className={styles.name}>{academicHistory.name}</p>
                         <p className={styles.faculty}>{academicHistory.faculty}</p>
@@ -180,12 +189,12 @@ const ApplicantMyPage = () => {
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}></div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={toggleIsEditBasicInfoModalModal} id={"cancel"}>
+            <CustomButton onClick={toggleIsEditBasicInfoModalModal} className={styles.cancel}>
               キャンセル
-            </Button>
-            <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
+            </CustomButton>
+            <CustomButton className={styles.update} onClick={() => console.log("update")}>
               更新
-            </Button>{" "}
+            </CustomButton>{" "}
           </div>
         </div>
       </Modal>
@@ -216,17 +225,17 @@ const ApplicantMyPage = () => {
         </div>
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}>
-            <Button color="#05C757" className={styles.delete} onClick={() => console.log("delete")}>
+            <CustomButton className={styles.delete} onClick={() => console.log("delete")}>
               削除する
-            </Button>
+            </CustomButton>
           </div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={toggleIsEditWorkHistoryModalVisible} id={"cancel"}>
+            <CustomButton onClick={toggleIsEditWorkHistoryModalVisible} className={styles.cancel}>
               キャンセル
-            </Button>
-            <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
+            </CustomButton>
+            <CustomButton className={styles.update} onClick={() => console.log("update")}>
               更新
-            </Button>{" "}
+            </CustomButton>{" "}
           </div>
         </div>
       </Modal>
@@ -255,17 +264,20 @@ const ApplicantMyPage = () => {
         </div>
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}>
-            <Button color="#05C757" className={styles.delete} onClick={() => console.log("delete")}>
+            <CustomButton className={styles.delete} onClick={() => console.log("delete")}>
               削除する
-            </Button>
+            </CustomButton>
           </div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={toggleIsAddAcademicHistoryModal} id={"cancel"}>
+            <CustomButton
+              onClick={toggleIsEditAcademicHistoryModalVisible}
+              className={styles.cancel}
+            >
               キャンセル
-            </Button>
-            <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
+            </CustomButton>
+            <CustomButton className={styles.update} onClick={() => console.log("update")}>
               更新
-            </Button>{" "}
+            </CustomButton>{" "}
           </div>
         </div>
       </Modal>
@@ -304,12 +316,12 @@ const ApplicantMyPage = () => {
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}></div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={toggleIsEditAcademicHistoryModalVisible} id={"cancel"}>
+            <CustomButton onClick={toggleIsAddWorkHistoryModalVisible} className={styles.cancel}>
               キャンセル
-            </Button>
-            <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
+            </CustomButton>
+            <CustomButton className={styles.update} onClick={() => console.log("update")}>
               更新
-            </Button>{" "}
+            </CustomButton>{" "}
           </div>
         </div>
       </Modal>
@@ -339,12 +351,12 @@ const ApplicantMyPage = () => {
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}></div>
           <div className={styles.modalButtonsRight}>
-            <Button color="#05C757" onClick={toggleIsAddWorkHistoryModalVisible} id={"cancel"}>
+            <CustomButton onClick={toggleIsAddAcademicHistoryModal} className={styles.cancel}>
               キャンセル
-            </Button>
-            <Button color="#05C757" className={styles.update} onClick={() => console.log("update")}>
+            </CustomButton>
+            <CustomButton className={styles.update} onClick={() => console.log("update")}>
               更新
-            </Button>{" "}
+            </CustomButton>{" "}
           </div>
         </div>
       </Modal>

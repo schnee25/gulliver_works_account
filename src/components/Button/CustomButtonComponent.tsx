@@ -1,15 +1,14 @@
-import React from "react";
+import React, { Children } from "react";
 import styles from "../../scenes/myPage";
 
 interface Props {
   className?: string;
   onClick: () => void;
-  color: string;
-
-  id: string;
+  color?: string;
+  id?: string;
 }
 
-const Button: React.FC<Props> = ({ className, onClick, color, id }) => {
+const CustomButton: React.FC<Props> = ({ className, onClick, color, id, children }) => {
   return (
     <button
       className={className}
@@ -18,8 +17,10 @@ const Button: React.FC<Props> = ({ className, onClick, color, id }) => {
       style={{
         backgroundColor: color,
       }}
-    ></button>
+    >
+      {children}
+    </button>
   );
 };
 
-export default Button;
+export default CustomButton;

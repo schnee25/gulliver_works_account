@@ -50,12 +50,23 @@
       font-size: 20px;
       margin-top: 30px;
     }
-    button {
+    .CustomButton {
       color: #afafaf;
       border: 1px solid #e5e5e5;
       box-sizing: border-box;
       border-radius: 4px;
       font-size: 12px;
+    }
+    .editButton {
+      border: 1px solid #e5e5e5;
+      color: #afafaf;
+      height: 18px;
+      border-radius: 1%;
+      height: 28px;
+      width: 78px;
+      max-width: 30%;
+      display: inline-block;
+      float: right;
     }
     .contentsOverAll {
       .workHistory,
@@ -103,6 +114,8 @@
         }
       }
       .add {
+        border: 1px solid #e5e5e5;
+        color: #afafaf;
         width: 100%;
         display: block;
       }
@@ -164,16 +177,26 @@
     .delete,
     .cancel,
     .update {
-      height: 30px;
+      height: 32px;
       margin: 0 10px;
       border-radius: 5px;
       display: inline-block;
     }
+
     .delete {
+      border: 1px solid red;
       color: red;
+      width: 95px;
+    }
+    .cancel {
+      background-color: #e5e5e5;
+      color: black;
+      width: 90px;
     }
     .update {
+      color: white;
       background-color: #05c757;
+      width: 85px;
     }
   }
   .ant-modal-footer {
