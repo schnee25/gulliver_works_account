@@ -1,4 +1,4 @@
-export interface AcademicBackgroundType {
+export interface AcademicHistoryType {
   id: string;
   name: string;
   sinceDate: Date;

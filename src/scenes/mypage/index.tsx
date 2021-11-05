@@ -4,7 +4,7 @@ import styles from "./style.module.scss";
 import axios from "axios";
 import { ProfileType } from "../../data/Profile";
 import { WorkHistoryType } from "../../data/WorkHistory";
-import { AcademicBackgroundType } from "../../data/AcademicBackground";
+import { AcademicHistoryType } from "../../data/AcademicBackground";
 import { HttpClient } from "../../utilities/axiosInstance";
 import profileBackground from "./images/profileTopBackground.jpg";
 import profileIcon from "./images/profIcon.png";
@@ -16,7 +16,7 @@ import { Modal, Button } from "antd";
 const ApplicantMyPage = () => {
   const [Profiles, setProfile] = useState<ProfileType>();
   const [workHistories, setWorkHistory] = useState<WorkHistoryType[]>();
-  const [academicHistories, setAcademicBackground] = useState<AcademicBackgroundType[]>();
+  const [academicHistories, setAcademicBackground] = useState<AcademicHistoryType[]>();
   const [open, setOpen] = React.useState(false);
   const [post, setPosts] = useState([]);
   const { account } = useCurrentAccount();
