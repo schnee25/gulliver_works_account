@@ -5,11 +5,11 @@ interface Props {
   className?: string;
   onClick: () => void;
   color: string;
-  children?: React.ReactNode;
+
   id: string;
 }
 
-const Button: React.FC<Props> = ({ className, onClick, color, children, id }) => {
+const Button: React.FC<Props> = ({ className, onClick, color, id }) => {
   return (
     <button
       className={className}
@@ -18,9 +18,7 @@ const Button: React.FC<Props> = ({ className, onClick, color, children, id }) =>
       style={{
         backgroundColor: color,
       }}
-    >
-      {children}
-    </button>
+    ></button>
   );
 };
 
