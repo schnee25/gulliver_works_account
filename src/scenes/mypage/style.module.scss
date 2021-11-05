@@ -17,6 +17,12 @@
       width: 100%;
       font-size: 14px;
       display: flex;
+      p {
+        margin: 0;
+      }
+      .profileIcon {
+        max-height: 120px;
+      }
       .subtitleTop {
         color: #7d7d7d;
       }
@@ -101,5 +107,76 @@
         display: block;
       }
     }
+  }
+}
+.modal {
+  .modalHeader {
+    text-align: center;
+    margin: 20px 0;
+    .modalImage {
+      display: block;
+    }
+    .modalProfileTopImages {
+      position: relative;
+      .modalProfileBackground {
+        max-width: 450px;
+      }
+      .modalProfileIcon {
+        max-width: 120px;
+        max-height: 120px;
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        // -webkit-transform: translateX(-50%);
+        // -ms-transform: translateX(-50%);  なくてもいけそう？
+      }
+    }
+  }
+  .modalMain {
+    margin: 30px 0;
+    .modalContentsTitle {
+      font-size: 12px;
+      color: #7d7d7d;
+    }
+    .modalDates {
+      display: flex;
+      margin-right: 23px;
+      .modalContents {
+        margin-right: 10px;
+        width: 150px;
+      }
+    }
+    .modalContents {
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 450px;
+      height: 40px;
+      padding: 10px 0 0 10px;
+    }
+  }
+  .modalButtons {
+    display: flex;
+    justify-content: space-between;
+    .delete,
+    .cancel,
+    .update {
+      height: 30px;
+      margin: 0 10px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .delete {
+      color: red;
+    }
+    .update {
+      background-color: #05c757;
+    }
+  }
+  .ant-modal-footer {
+    display: none !important;
   }
 }
