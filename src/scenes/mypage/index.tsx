@@ -11,6 +11,12 @@ import profileIcon from "./images/profIcon.png";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { APIHost } from "../../utilities/constants";
 import CustomButton from "../../components/Button/CustomButtonComponent";
+import EditBasicInfoModal from "../myPage/modals/editBasicInfoModal";
+import EditSelfIntroductionModal from "./modals/editSelfIntroductionModal";
+import AddAcademicHistoryModal from "./modals/addAcademicHistoryModal";
+import AddWorkHistoryModal from "../myPage/modals/addWorkHistoryModal";
+import EditAcademicHistoryModal from "../myPage/modals/editAcademicHistoryModal";
+import EditWorkHistoryModal from "../myPage/modals/editWorkHistoryModal";
 import { Modal, Button } from "antd";
 
 const ApplicantMyPage = () => {
@@ -33,31 +39,30 @@ const ApplicantMyPage = () => {
     });
   }, []);
 
-  // EditWorkHistoryModalModalコンポーネントの表示の状態を定義する
-  const [isWorkHistoryModalVisible, setIsEditWorkHistoryModalVisible] = useState(false);
-  const toggleIsEditWorkHistoryModalVisible = () => {
-    setIsEditWorkHistoryModalVisible(!isWorkHistoryModalVisible);
-  };
-  const [isAddWorkHistoryModalVisible, setIsAddWorkHistoryModalVisible] = useState(false);
-  const toggleIsAddWorkHistoryModalVisible = () => {
-    setIsAddWorkHistoryModalVisible(!isAddWorkHistoryModalVisible);
-  };
-
   const [isEditBasicInfoModalVisible, setIsEditBasicInfoModalModal] = useState(false);
   const toggleIsEditBasicInfoModalModal = () => {
     setIsEditBasicInfoModalModal(!isEditBasicInfoModalVisible);
   };
-
-  const [isAcademicHistoryModalVisible, setIsEditAcademicHistoryModalModal] = useState(false);
-  const toggleIsEditAcademicHistoryModalVisible = () => {
-    setIsEditAcademicHistoryModalModal(!isAcademicHistoryModalVisible);
+  const [isEditSelfIntroductionModalVisible, setIsEditSelfIntroductionModalModal] = useState(false);
+  const toggleIsEditSelfIntroductionModalModal = () => {
+    setIsEditSelfIntroductionModalModal(!isEditSelfIntroductionModalVisible);
   };
   const [isAddAcademicHistoryModalVisible, setIsAddAcademicHistoryModalModal] = useState(false);
   const toggleIsAddAcademicHistoryModal = () => {
     setIsAddAcademicHistoryModalModal(!isAddAcademicHistoryModalVisible);
   };
-
-  //
+  const [isAddWorkHistoryModalVisible, setIsAddWorkHistoryModalVisible] = useState(false);
+  const toggleIsAddWorkHistoryModalVisible = () => {
+    setIsAddWorkHistoryModalVisible(!isAddWorkHistoryModalVisible);
+  };
+  const [isAcademicHistoryModalVisible, setIsEditAcademicHistoryModalModal] = useState(false);
+  const toggleIsEditAcademicHistoryModalVisible = () => {
+    setIsEditAcademicHistoryModalModal(!isAcademicHistoryModalVisible);
+  };
+  const [isWorkHistoryModalVisible, setIsEditWorkHistoryModalVisible] = useState(false);
+  const toggleIsEditWorkHistoryModalVisible = () => {
+    setIsEditWorkHistoryModalVisible(!isWorkHistoryModalVisible);
+  };
 
   return (
     <React.Fragment>
@@ -66,6 +71,7 @@ const ApplicantMyPage = () => {
           <div className={styles.profileHeaderBackground}>
             <img src={profileBackground} alt="" className={styles.profileTopBackground} />
           </div>
+
           <div className={styles.profileOverview}>
             <img src={profileIcon} alt="" className={styles.profileIcon} />
             <div className={styles.contentsTop}>
@@ -74,12 +80,18 @@ const ApplicantMyPage = () => {
               <p className={styles.subtitleTop}>住まい</p> <p>{Profiles?.address}</p>
               <p className={styles.subtitleTop}>最終学歴</p>{" "}
               {academicHistories && <p>{academicHistories[0].name}</p>}
-            </div>
+            </div>{" "}
+            <CustomButton className={styles.editButton} onClick={toggleIsEditBasicInfoModalModal}>
+              プロフィールを編集
+            </CustomButton>
           </div>
         </div>
         <div className={styles.container}>
           <div className={styles.selfIntroduction}>
-            <CustomButton className={styles.editButton} onClick={toggleIsEditBasicInfoModalModal}>
+            <CustomButton
+              className={styles.editButton}
+              onClick={toggleIsEditSelfIntroductionModalModal}
+            >
               編集
             </CustomButton>
             <h3 className={styles.subtitle}>自己紹介</h3>
@@ -154,212 +166,37 @@ const ApplicantMyPage = () => {
           </div>
         </div>
       </div>
-      {/* モーダル */}
-      {/* 編集 */}
-      {/* プロフィール */}
-      <Modal
-        title=""
-        visible={isEditBasicInfoModalVisible}
-        className={styles.modal}
-        footer={null}
-        destroyOnClose={true}
-        closable={false}
-      >
-        <div className={styles.modalHeader}>
-          <h1>プロフィール</h1>
-          <div className={styles.modalProfileTopImages}>
-            <img src={profileBackground} alt="" className={styles.modalProfileBackground} />
-            <img src={profileIcon} alt="" className={styles.modalProfileIcon} />
-          </div>
-        </div>
-        <div className={styles.modalMain}>
-          <h2 className={styles.modalContentsTitle}>名前</h2>
-          <p className={styles.modalContents}>
-            {Profiles?.lastName}
-            {Profiles?.firstName}
-          </p>
-          <h2 className={styles.modalContentsTitle}>住まい</h2>
-          <p className={styles.modalContents}>{Profiles?.address}</p>
-          <h2 className={styles.modalContentsTitle}>性別</h2>
-          <p className={styles.modalContents}></p>
-          <h2 className={styles.modalContentsTitle}>日程</h2>
-          <input className={styles.modalContents} type="date" name="" id="" />
-        </div>
 
-        <div className={styles.modalButtons}>
-          <div className={styles.modalButtonsLeft}></div>
-          <div className={styles.modalButtonsRight}>
-            <CustomButton onClick={toggleIsEditBasicInfoModalModal} className={styles.cancel}>
-              キャンセル
-            </CustomButton>
-            <CustomButton className={styles.update} onClick={() => console.log("update")}>
-              更新
-            </CustomButton>{" "}
-          </div>
-        </div>
-      </Modal>
-      ;{/* 職歴 */}
-      <Modal
-        title=""
-        visible={isWorkHistoryModalVisible}
-        className={styles.modal}
-        footer={null}
-        destroyOnClose={true}
-        closable={false}
-      >
-        <div className={styles.modalHeader}>
-          <h1>職歴</h1>
-        </div>
-        <div className={styles.modalMain}>
-          <h2 className={styles.modalContentsTitle}>企業名</h2>
-          <div className={styles.modalContents}></div>
-          <h2 className={styles.modalContentsTitle}>部署･役職</h2>
-          <div className={styles.modalContents}></div>
-          <h2 className={styles.modalContentsTitle}>日程</h2>
-          <div className={styles.modalDates}>
-            <input className={styles.modalContents} type="date" name="" id="" />
-            <input className={styles.modalContents} type="date" name="" id="" />
-          </div>
-          <h2 className={styles.modalContentsTitle}>職歴</h2>
-          <div className={styles.modalContents}></div>
-        </div>
-        <div className={styles.modalButtons}>
-          <div className={styles.modalButtonsLeft}>
-            <CustomButton className={styles.delete} onClick={() => console.log("delete")}>
-              削除する
-            </CustomButton>
-          </div>
-          <div className={styles.modalButtonsRight}>
-            <CustomButton onClick={toggleIsEditWorkHistoryModalVisible} className={styles.cancel}>
-              キャンセル
-            </CustomButton>
-            <CustomButton className={styles.update} onClick={() => console.log("update")}>
-              更新
-            </CustomButton>{" "}
-          </div>
-        </div>
-      </Modal>
-      ;{/* 学歴 */}
-      <Modal
-        title=""
-        visible={isAcademicHistoryModalVisible}
-        className={styles.modal}
-        footer={null}
-        destroyOnClose={true}
-        closable={false}
-      >
-        <div className={styles.modalHeader}>
-          <h1>学歴</h1>
-        </div>
-        <div className={styles.modalMain}>
-          <h2 className={styles.modalContentsTitle}>学校名</h2>
-          <div className={styles.modalContents}></div>
-          <h2 className={styles.modalContentsTitle}>学部･学科</h2>
-          <div className={styles.modalContents}></div>
-          <h2 className={styles.modalContentsTitle}>日程</h2>
-          <div className={styles.modalDates}>
-            <input className={styles.modalContents} type="date" name="" id="" />
-            <input className={styles.modalContents} type="date" name="" id="" />
-          </div>
-        </div>
-        <div className={styles.modalButtons}>
-          <div className={styles.modalButtonsLeft}>
-            <CustomButton className={styles.delete} onClick={() => console.log("delete")}>
-              削除する
-            </CustomButton>
-          </div>
-          <div className={styles.modalButtonsRight}>
-            <CustomButton
-              onClick={toggleIsEditAcademicHistoryModalVisible}
-              className={styles.cancel}
-            >
-              キャンセル
-            </CustomButton>
-            <CustomButton className={styles.update} onClick={() => console.log("update")}>
-              更新
-            </CustomButton>{" "}
-          </div>
-        </div>
-      </Modal>
-      ;{/* 追加ここから */}
-      {/* 職歴追加 */}
-      <Modal
-        title=""
-        visible={isAddWorkHistoryModalVisible}
-        className={styles.modal}
-        footer={null}
-        destroyOnClose={true}
-        closable={false}
-      >
-        <div className={styles.modalHeader}>
-          <h1>職歴</h1>
-        </div>
-        <div className={styles.modalMain}>
-          <h2 className={styles.modalContentsTitle}>企業名</h2>
-          <input className={styles.modalContents} type="text" name="" id="" />
-          <h2 className={styles.modalContentsTitle}>部署･役職</h2>
-          <input className={styles.modalContents} type="text" name="" id="" />
-          <h2 className={styles.modalContentsTitle}>日程</h2>
-          <div className={styles.modalDates}>
-            <input className={styles.modalContents} type="date" name="" id="" />
-            <input className={styles.modalContents} type="date" name="" id="" />
-          </div>
-          <h2 className={styles.modalContentsTitle}>職歴</h2>
-          <input
-            className={styles.modalContents}
-            type="text"
-            name=""
-            id=""
-            placeholder="　業務内容や結果"
-          />
-        </div>
-        <div className={styles.modalButtons}>
-          <div className={styles.modalButtonsLeft}></div>
-          <div className={styles.modalButtonsRight}>
-            <CustomButton onClick={toggleIsAddWorkHistoryModalVisible} className={styles.cancel}>
-              キャンセル
-            </CustomButton>
-            <CustomButton className={styles.update} onClick={() => console.log("update")}>
-              更新
-            </CustomButton>{" "}
-          </div>
-        </div>
-      </Modal>
-      {/* 学歴追加 */}
-      <Modal
-        title=""
+      <EditBasicInfoModal
+        profiles={Profiles}
+        visible={isEditBasicInfoModalVisible}
+        onClick={toggleIsEditBasicInfoModalModal}
+      ></EditBasicInfoModal>
+      <EditSelfIntroductionModal
+        profiles={Profiles}
+        visible={isEditSelfIntroductionModalVisible}
+        onClick={toggleIsEditSelfIntroductionModalModal}
+      ></EditSelfIntroductionModal>
+      <AddAcademicHistoryModal
         visible={isAddAcademicHistoryModalVisible}
-        className={styles.modal}
-        footer={null}
-        destroyOnClose={true}
-        closable={false}
+        onClick={toggleIsAddAcademicHistoryModal}
+      ></AddAcademicHistoryModal>
+      <AddWorkHistoryModal
+        visible={isAddWorkHistoryModalVisible}
+        onClick={toggleIsAddWorkHistoryModalVisible}
+      ></AddWorkHistoryModal>
+      <EditAcademicHistoryModal
+        // academicHistories={}
+        visible={isAcademicHistoryModalVisible}
+        onClick={toggleIsEditAcademicHistoryModalVisible}
+      ></EditAcademicHistoryModal>
+      <EditWorkHistoryModal
+        // workHistories={workHistories}
+        visible={isWorkHistoryModalVisible}
+        onClick={toggleIsEditWorkHistoryModalVisible}
       >
-        <div className={styles.modalHeader}>
-          <h1>学歴</h1>
-        </div>
-        <div className={styles.modalMain}>
-          <h2 className={styles.modalContentsTitle}>学校名</h2>
-          <input className={styles.modalContents} type="text" name="" id="" />
-          <h2 className={styles.modalContentsTitle}>学部･学科</h2>
-          <input className={styles.modalContents} type="text" name="" id="" />
-          <h2 className={styles.modalContentsTitle}>日程</h2>
-          <div className={styles.modalDates}>
-            <input className={styles.modalContents} type="date" name="" id="" />
-            <input className={styles.modalContents} type="date" name="" id="" />
-          </div>
-        </div>
-        <div className={styles.modalButtons}>
-          <div className={styles.modalButtonsLeft}></div>
-          <div className={styles.modalButtonsRight}>
-            <CustomButton onClick={toggleIsAddAcademicHistoryModal} className={styles.cancel}>
-              キャンセル
-            </CustomButton>
-            <CustomButton className={styles.update} onClick={() => console.log("update")}>
-              更新
-            </CustomButton>{" "}
-          </div>
-        </div>
-      </Modal>
+        {" "}
+      </EditWorkHistoryModal>
     </React.Fragment>
   );
 };

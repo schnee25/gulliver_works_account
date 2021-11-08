@@ -3,6 +3,11 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  .editButton {
+    border: 1px solid #e5e5e5;
+    color: #afafaf;
+    border-radius: 1%;
+  }
   .profileHeader {
     position: relative;
     .profileHeaderBackground {
@@ -34,6 +39,13 @@
           font-size: 24px;
         }
       }
+      .editButton {
+        height: 30px;
+        width: 130px;
+        max-width: 30%;
+        display: inline-block;
+        margin-left: 28%;
+      }
     }
   }
   .container {
@@ -58,10 +70,6 @@
       font-size: 12px;
     }
     .editButton {
-      border: 1px solid #e5e5e5;
-      color: #afafaf;
-      height: 18px;
-      border-radius: 1%;
       height: 28px;
       width: 78px;
       max-width: 30%;
