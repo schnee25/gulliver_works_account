@@ -20,7 +20,6 @@ interface Props {
 const EditAcademicHistoryModal: React.FC<Props> = ({ academicHistories, visible, onClick }) => {
   return (
     <React.Fragment>
-      {" "}
       ;{/* 学歴 */}
       <Modal
         title=""
@@ -60,7 +59,7 @@ const EditAcademicHistoryModal: React.FC<Props> = ({ academicHistories, visible,
             </CustomButton>
             <CustomButton className={styles.update} onClick={() => console.log("update")}>
               更新
-            </CustomButton>{" "}
+            </CustomButton>
           </div>
         </div>
       </Modal>

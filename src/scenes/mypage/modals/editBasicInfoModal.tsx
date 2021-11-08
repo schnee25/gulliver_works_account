@@ -66,7 +66,7 @@ const EditBasicInfoModal: React.FC<Props> = ({ profiles, visible, onClick }) => 
             </CustomButton>
             <CustomButton className={styles.update} onClick={() => console.log("update")}>
               更新
-            </CustomButton>{" "}
+            </CustomButton>
           </div>
         </div>
       </Modal>

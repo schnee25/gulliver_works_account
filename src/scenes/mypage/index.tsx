@@ -78,9 +78,9 @@ const ApplicantMyPage = () => {
               <p className={styles.name}>{Profiles?.lastName}</p>
               <p className={styles.name}>{Profiles?.firstName}</p>
               <p className={styles.subtitleTop}>住まい</p> <p>{Profiles?.address}</p>
-              <p className={styles.subtitleTop}>最終学歴</p>{" "}
+              <p className={styles.subtitleTop}>最終学歴</p>
               {academicHistories && <p>{academicHistories[0].name}</p>}
-            </div>{" "}
+            </div>
             <CustomButton className={styles.editButton} onClick={toggleIsEditBasicInfoModalModal}>
               プロフィールを編集
             </CustomButton>
@@ -194,9 +194,7 @@ const ApplicantMyPage = () => {
         // workHistories={workHistories}
         visible={isWorkHistoryModalVisible}
         onClick={toggleIsEditWorkHistoryModalVisible}
-      >
-        {" "}
-      </EditWorkHistoryModal>
+      ></EditWorkHistoryModal>
     </React.Fragment>
   );
 };
