@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import styles from "../../myPage/style.module.scss";
+import styles from "../style.module.scss";
 import { ProfileType } from "../../../data/Profile";
 import { WorkHistoryType } from "../../../data/WorkHistory";
 import { AcademicHistoryType } from "../../../data/AcademicHistory";
@@ -11,6 +11,7 @@ import { useCurrentAccount } from "../../../hooks/useCurrentAccount";
 import { APIHost } from "../../../utilities/constants";
 import CustomButton from "../../../components/Button/CustomButtonComponent";
 import { Modal, Button } from "antd";
+import WorkModalForm from "../../../components/ModalForm/WorkModalFormComponent";
 
 interface Props {
   workHistories?: WorkHistoryType;
@@ -18,7 +19,7 @@ interface Props {
   onClick: () => void;
 }
 
-const EditWorkHistoryModal: React.FC<Props> = ({ workHistories, visible, onClick }) => {
+const WorkHistoryModal: React.FC<Props> = ({ workHistories, visible, onClick }) => {
   return (
     <React.Fragment>
       ;{/* 職歴 */}
@@ -34,21 +35,15 @@ const EditWorkHistoryModal: React.FC<Props> = ({ workHistories, visible, onClick
           <h1>職歴</h1>
         </div>
         <div className={styles.modalMain}>
-          <h2 className={styles.modalContentsTitle}>企業名</h2>
-          <div className={styles.modalContents}></div>
-          <h2 className={styles.modalContentsTitle}>部署･役職</h2>
-          <div className={styles.modalContents}></div>
-          <h2 className={styles.modalContentsTitle}>日程</h2>
-          <div className={styles.modalDates}>
-            <input className={styles.modalContents} type="date" name="" id="" />
-            <input className={styles.modalContents} type="date" name="" id="" />
-          </div>
-          <h2 className={styles.modalContentsTitle}>職歴</h2>
-          <div className={styles.modalContents}></div>
+          <WorkModalForm />
         </div>
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}>
-            <CustomButton className={styles.delete} onClick={() => console.log("delete")}>
+            <CustomButton
+              className={styles.modalButton}
+              onClick={() => console.log("delete")}
+              color="white"
+            >
               削除する
             </CustomButton>
           </div>
@@ -56,11 +51,16 @@ const EditWorkHistoryModal: React.FC<Props> = ({ workHistories, visible, onClick
             <CustomButton
               onClick={onClick}
               // onClick={toggleIsEditWorkHistoryModalVisible}
-              className={styles.cancel}
+              className={styles.modalButton}
+              color="gray"
             >
               キャンセル
             </CustomButton>
-            <CustomButton className={styles.update} onClick={() => console.log("update")}>
+            <CustomButton
+              color="green"
+              className={styles.modalButton}
+              onClick={() => console.log("update")}
+            >
               更新
             </CustomButton>
           </div>
@@ -70,4 +70,4 @@ const EditWorkHistoryModal: React.FC<Props> = ({ workHistories, visible, onClick
   );
 };
 
-export default EditWorkHistoryModal;
+export default WorkHistoryModal;

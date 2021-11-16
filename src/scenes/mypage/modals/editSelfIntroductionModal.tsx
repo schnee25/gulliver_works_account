@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import styles from "../../myPage/style.module.scss";
+import styles from "../style.module.scss";
 import { ProfileType } from "../../../data/Profile";
 import { WorkHistoryType } from "../../../data/WorkHistory";
 import { AcademicHistoryType } from "../../../data/AcademicHistory";
@@ -39,7 +39,11 @@ const EditSelfIntroductionModal: React.FC<Props> = ({ profiles, visible, onClick
         </div>
         <div className={styles.modalButtons}>
           <div className={styles.modalButtonsLeft}>
-            <CustomButton className={styles.delete} onClick={() => console.log("delete")}>
+            <CustomButton
+              className={styles.modalButton}
+              onClick={() => console.log("delete")}
+              color="white"
+            >
               削除する
             </CustomButton>
           </div>
@@ -47,11 +51,16 @@ const EditSelfIntroductionModal: React.FC<Props> = ({ profiles, visible, onClick
             <CustomButton
               onClick={onClick}
               // onClick={toggleIsEditWorkHistoryModalVisible}
-              className={styles.cancel}
+              className={styles.modalButton}
+              color="gray"
             >
               キャンセル
             </CustomButton>
-            <CustomButton className={styles.update} onClick={() => console.log("update")}>
+            <CustomButton
+              color="green"
+              className={styles.modalButton}
+              onClick={() => console.log("update")}
+            >
               更新
             </CustomButton>
           </div>
