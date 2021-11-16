@@ -13,10 +13,8 @@ import { APIHost } from "../../utilities/constants";
 import CustomButton from "../../components/Button/CustomButtonComponent";
 import EditBasicInfoModal from "../myPage/modals/editBasicInfoModal";
 import EditSelfIntroductionModal from "./modals/editSelfIntroductionModal";
-import AddAcademicHistoryModal from "./modals/addAcademicHistoryModal";
-import AddWorkHistoryModal from "../myPage/modals/addWorkHistoryModal";
-import EditAcademicHistoryModal from "../myPage/modals/editAcademicHistoryModal";
-import EditWorkHistoryModal from "../myPage/modals/editWorkHistoryModal";
+import AcademicHistoryModal from "./modals/academicHistoryModal";
+import WorkHistoryModal from "./modals/workHistoryModal";
 import { Modal, Button } from "antd";
 
 const ApplicantMyPage = () => {
@@ -47,21 +45,14 @@ const ApplicantMyPage = () => {
   const toggleIsEditSelfIntroductionModalModal = () => {
     setIsEditSelfIntroductionModalModal(!isEditSelfIntroductionModalVisible);
   };
-  const [isAddAcademicHistoryModalVisible, setIsAddAcademicHistoryModalModal] = useState(false);
-  const toggleIsAddAcademicHistoryModal = () => {
-    setIsAddAcademicHistoryModalModal(!isAddAcademicHistoryModalVisible);
+
+  const [isAcademicHistoryModalVisible, setIsAcademicHistoryModalModal] = useState(false);
+  const toggleIsAcademicHistoryModalVisible = () => {
+    setIsAcademicHistoryModalModal(!isAcademicHistoryModalVisible);
   };
-  const [isAddWorkHistoryModalVisible, setIsAddWorkHistoryModalVisible] = useState(false);
-  const toggleIsAddWorkHistoryModalVisible = () => {
-    setIsAddWorkHistoryModalVisible(!isAddWorkHistoryModalVisible);
-  };
-  const [isAcademicHistoryModalVisible, setIsEditAcademicHistoryModalModal] = useState(false);
-  const toggleIsEditAcademicHistoryModalVisible = () => {
-    setIsEditAcademicHistoryModalModal(!isAcademicHistoryModalVisible);
-  };
-  const [isWorkHistoryModalVisible, setIsEditWorkHistoryModalVisible] = useState(false);
-  const toggleIsEditWorkHistoryModalVisible = () => {
-    setIsEditWorkHistoryModalVisible(!isWorkHistoryModalVisible);
+  const [isWorkHistoryModalVisible, setIsWorkHistoryModalVisible] = useState(false);
+  const toggleIsWorkHistoryModalVisible = () => {
+    setIsWorkHistoryModalVisible(!isWorkHistoryModalVisible);
   };
 
   return (
@@ -116,7 +107,7 @@ const ApplicantMyPage = () => {
                     <div className={styles.contents}>
                       <CustomButton
                         className={styles.editButton}
-                        onClick={toggleIsEditWorkHistoryModalVisible}
+                        onClick={toggleIsWorkHistoryModalVisible}
                       >
                         編集
                       </CustomButton>
@@ -129,7 +120,7 @@ const ApplicantMyPage = () => {
                   </div>
                 );
               })}
-              <CustomButton onClick={toggleIsAddWorkHistoryModalVisible} className={styles.add}>
+              <CustomButton onClick={toggleIsWorkHistoryModalVisible} className={styles.addButton}>
                 職歴を追加
               </CustomButton>
             </div>
@@ -147,7 +138,7 @@ const ApplicantMyPage = () => {
                     <div className={styles.contents}>
                       <CustomButton
                         className={styles.editButton}
-                        onClick={toggleIsEditAcademicHistoryModalVisible}
+                        onClick={toggleIsAcademicHistoryModalVisible}
                       >
                         編集
                       </CustomButton>
@@ -159,7 +150,7 @@ const ApplicantMyPage = () => {
                   </div>
                 );
               })}
-              <button onClick={toggleIsAddAcademicHistoryModal} className={styles.add}>
+              <button onClick={toggleIsAcademicHistoryModalVisible} className={styles.addButton}>
                 学歴を追加
               </button>
             </div>
@@ -177,24 +168,16 @@ const ApplicantMyPage = () => {
         visible={isEditSelfIntroductionModalVisible}
         onClick={toggleIsEditSelfIntroductionModalModal}
       ></EditSelfIntroductionModal>
-      <AddAcademicHistoryModal
-        visible={isAddAcademicHistoryModalVisible}
-        onClick={toggleIsAddAcademicHistoryModal}
-      ></AddAcademicHistoryModal>
-      <AddWorkHistoryModal
-        visible={isAddWorkHistoryModalVisible}
-        onClick={toggleIsAddWorkHistoryModalVisible}
-      ></AddWorkHistoryModal>
-      <EditAcademicHistoryModal
-        // academicHistories={}
+
+      <AcademicHistoryModal
         visible={isAcademicHistoryModalVisible}
-        onClick={toggleIsEditAcademicHistoryModalVisible}
-      ></EditAcademicHistoryModal>
-      <EditWorkHistoryModal
+        onClick={toggleIsAcademicHistoryModalVisible}
+      ></AcademicHistoryModal>
+      <WorkHistoryModal
         // workHistories={workHistories}
         visible={isWorkHistoryModalVisible}
-        onClick={toggleIsEditWorkHistoryModalVisible}
-      ></EditWorkHistoryModal>
+        onClick={toggleIsWorkHistoryModalVisible}
+      ></WorkHistoryModal>
     </React.Fragment>
   );
 };
