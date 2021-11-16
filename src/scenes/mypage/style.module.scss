@@ -121,7 +121,7 @@
           color: #606060;
         }
       }
-      .add {
+      .addButton {
         border: 1px solid #e5e5e5;
         color: #afafaf;
         width: 100%;
@@ -182,14 +182,20 @@
   .modalButtons {
     display: flex;
     justify-content: space-between;
-    .delete,
-    .cancel,
-    .update {
+    .modalButton {
       height: 32px;
       margin: 0 10px;
       border-radius: 5px;
       display: inline-block;
     }
+    // .delete,
+    // .cancel,
+    // .update {
+    //   height: 32px;
+    //   margin: 0 10px;
+    //   border-radius: 5px;
+    //   display: inline-block;
+    // }
 
     // .delete {
     //   border: 1px solid red;
