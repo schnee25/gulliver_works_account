@@ -40,16 +40,24 @@ const EditBasicInfoModal: React.FC<Props> = ({ profiles, visible, onClick }) => 
         </div>
         <div className={styles.modalMain}>
           <h2 className={styles.modalContentsTitle}>名前</h2>
-          <p className={styles.modalContents}>
-            {profiles?.lastName}
-            {profiles?.firstName}
-          </p>
+          <div className={styles.modalProfileName}>
+            <input
+              className={styles.modalContents}
+              id="lastName"
+              type="text"
+              value={profiles?.lastName}
+            />
+            <input
+              className={styles.modalContents}
+              id="firstName"
+              type="text"
+              value={profiles?.firstName}
+            />
+          </div>
           <h2 className={styles.modalContentsTitle}>住まい</h2>
-          <p className={styles.modalContents}>{profiles?.address}</p>
+          <input className={styles.modalContents} type="text" value={profiles?.address} />
           <h2 className={styles.modalContentsTitle}>性別</h2>
-          <p className={styles.modalContents}>
-            <p className={styles.gender}>{profiles?.gender}</p>
-          </p>
+          <input className={styles.modalContents} type="text" value={profiles?.gender} />
           <h2 className={styles.modalContentsTitle}>日程</h2>
           <input className={styles.modalContents} type="date" name="" id="" />
         </div>
