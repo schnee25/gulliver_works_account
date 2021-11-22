@@ -3,6 +3,11 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  .editButton {
+    border: 1px solid #e5e5e5;
+    color: #afafaf;
+    border-radius: 1%;
+  }
   .profileHeader {
     position: relative;
     .profileHeaderBackground {
@@ -17,6 +22,12 @@
       width: 100%;
       font-size: 14px;
       display: flex;
+      p {
+        margin: 0;
+      }
+      .profileIcon {
+        max-height: 120px;
+      }
       .subtitleTop {
         color: #7d7d7d;
       }
@@ -27,6 +38,13 @@
           display: inline-block;
           font-size: 24px;
         }
+      }
+      .editButton {
+        height: 30px;
+        width: 130px;
+        max-width: 30%;
+        display: inline-block;
+        margin-left: 28%;
       }
     }
   }
@@ -44,12 +62,19 @@
       font-size: 20px;
       margin-top: 30px;
     }
-    button {
+    .CustomButton {
       color: #afafaf;
       border: 1px solid #e5e5e5;
       box-sizing: border-box;
       border-radius: 4px;
       font-size: 12px;
+    }
+    .editButton {
+      height: 28px;
+      width: 78px;
+      max-width: 30%;
+      display: inline-block;
+      float: right;
     }
     .contentsOverAll {
       .workHistory,
@@ -96,10 +121,102 @@
           color: #606060;
         }
       }
-      .add {
+      .addButton {
+        border: 1px solid #e5e5e5;
+        color: #afafaf;
         width: 100%;
         display: block;
       }
     }
+  }
+}
+.modal {
+  .modalHeader {
+    text-align: center;
+    margin: 20px 0;
+    .modalImage {
+      display: block;
+    }
+    .modalProfileTopImages {
+      position: relative;
+      .modalProfileBackground {
+        max-width: 450px;
+      }
+      .modalProfileIcon {
+        max-width: 120px;
+        max-height: 120px;
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        // -webkit-transform: translateX(-50%);
+        // -ms-transform: translateX(-50%);  なくてもいけそう？
+      }
+    }
+  }
+  .modalMain {
+    margin: 30px 0;
+    .modalContentsTitle {
+      font-size: 12px;
+      color: #7d7d7d;
+    }
+    .modalProfileName {
+      display: flex;
+    }
+    .modalDates {
+      display: flex;
+      margin-right: 23px;
+      .modalContents {
+        margin-right: 10px;
+        width: 150px;
+      }
+    }
+    .modalContents {
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 450px;
+      height: 40px;
+      padding: 10px 0 0 10px;
+    }
+  }
+  .modalButtons {
+    display: flex;
+    justify-content: space-between;
+    .modalButton {
+      height: 32px;
+      margin: 0 10px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    // .delete,
+    // .cancel,
+    // .update {
+    //   height: 32px;
+    //   margin: 0 10px;
+    //   border-radius: 5px;
+    //   display: inline-block;
+    // }
+
+    // .delete {
+    //   border: 1px solid red;
+    //   color: red;
+    //   width: 95px;
+    // }
+    // .cancel {
+    //   background-color: #e5e5e5;
+    //   color: black;
+    //   width: 90px;
+    // }
+    // .update {
+    //   color: white;
+    //   background-color: #05c757;
+    //   width: 85px;
+    // }
+  }
+  .ant-modal-footer {
+    display: none !important;
   }
 }
