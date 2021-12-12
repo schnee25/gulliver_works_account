@@ -3,7 +3,7 @@ import "./App.scss";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import RecruitmentIndexPage from "./scenes/recruitment/RecruitmentIndexPage";
 import SignInPage from "./scenes/signIn";
-import ApplicantMyPage from "./scenes/myPage";
+import ApplicantMyPage from "./scenes/mypage";
 
 import { Button } from "antd/lib/radio";
 
