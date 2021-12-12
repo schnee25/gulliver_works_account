@@ -11,10 +11,10 @@ import profileIcon from "./images/profIcon.png";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { APIHost } from "../../utilities/constants";
 import CustomButton from "../../components/Button/CustomButtonComponent";
-import EditBasicInfoModal from "../myPage/modals/editBasicInfoModal";
-import EditSelfIntroductionModal from "./modals/editSelfIntroductionModal";
-import AcademicHistoryModal from "./modals/academicHistoryModal";
-import WorkHistoryModal from "./modals/workHistoryModal";
+import EditBasicInfoModal from "../mypage/modals/editBasicInfoModal";
+import EditSelfIntroductionModal from "../mypage/modals/editSelfIntroductionModal";
+import AcademicHistoryModal from "../mypage/modals/academicHistoryModal";
+import WorkHistoryModal from "../mypage/modals/workHistoryModal";
 import { Modal, Button } from "antd";
 
 const ApplicantMyPage = () => {
